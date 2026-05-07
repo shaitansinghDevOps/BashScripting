@@ -3,7 +3,7 @@
 echo "Configuration management for frontend in progress"
 ID=$(id -u)
 Component="frontend"
-Log=$("/tmp/$Component.log")
+Log=$("/tmp/${Component}.log")
 if [ $ID -ne 0 ]
 then
  echo "script has to excute as root user"
@@ -13,9 +13,10 @@ fi
 stat()
 {
     if [$1 -eq 0]; then
-     echo -e "\e[32m sucuess [0m"
+     echo -e "\e[32m sucuess \e[0m"
     else 
-      echo -e "\e[33m sucuess [0m"
+      echo -e "\e[33m sucuess \e[0m"
+      exit 2
     fi
 }
 echo "disbling the nagnix"
