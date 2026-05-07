@@ -2,7 +2,7 @@
 
 echo "Configuration management for frontend in progress"
 ID=$(id -u)
-if[ $ID -ne 0 ]
+if [ $ID -ne 0 ]
 then
  echo "script has to excute as root user"
  echo -e "Example usage:\n\t \e[32msudo bash $0 OR bash $0\e[0m"
