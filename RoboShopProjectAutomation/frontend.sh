@@ -26,3 +26,6 @@ rm -rf *
 
 echo "Unziping the folder"
 unzip /tmp/$Component.zip
+echo "Starting the $Component servive"
+systemctl enable nginx
+systemctl restart nginx
