@@ -23,35 +23,35 @@ stat() {
    fi
 }
 
-echo "Disabling nginx"
+echo -n "Disabling nginx"
 dnf module disable nginx -y &>> $LOG
 stat $?
 
-echo "Enabling nginx"
+echo -n "Enabling nginx"
 dnf module enable nginx:1.24 -y &>> $LOG
 stat $?
 
-echo "Installing nginx"
+echo -n "Installing nginx"
 dnf install nginx -y &>> $LOG
 stat $?
 
-echo "Downloading the UI of $COMPONENT"
+echo -n "Downloading the UI of $COMPONENT"
 curl -L -o /tmp/$COMPONENT.zip https://stan-robotshop.s3.amazonaws.com/$COMPONENT-v3.zip &>> $LOG
 stat $?
 
-echo "Cleanup Job"
+echo -n "Cleanup Job"
 cd /usr/share/nginx/html &>> $LOG
 rm -rf * &>> $LOG
 stat $?
 
-echo "Unzipping the folder"
+echo -n "Unzipping the folder"
 unzip /tmp/$COMPONENT.zip &>> $LOG
 stat $?
 
-echo "Enabling the $COMPONENT service"
+echo -n "Enabling the $COMPONENT service"
 systemctl enable nginx &>> $LOG
 stat $?
 
-echo "Starting the $COMPONENT service"
+echo -n "Starting the $COMPONENT service"
 systemctl restart nginx &>> $LOG
 stat $?
