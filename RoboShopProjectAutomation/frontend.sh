@@ -49,7 +49,7 @@ unzip /tmp/$COMPONENT.zip &>> $LOG
 stat $?
 
 echo -n "Configuring $COMPONENT proxy file"
-cp /home/ec2-user/RoboShopProjectAutomation/nginx.conf /etc/nginx/nginx.conf
+cp nginx.conf /etc/nginx/nginx.conf
 stat $?
 
 echo -n "Enabling the $COMPONENT service"
