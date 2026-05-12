@@ -51,7 +51,7 @@ stat $?
 pwd
 ls
 echo -n "Configuring $COMPONENT proxy file"
-cp nginx.conf /etc/nginx/nginx.conf
+cp /home/ec2-user/Roboshop/BashScripting/RoboShopProjectAutomation/nginx.conf /etc/nginx/nginx.conf
 stat $?
 
 echo -n "Enabling the $COMPONENT service"
