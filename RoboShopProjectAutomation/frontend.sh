@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Configuration management for frontend in progress"
+echo "Configuration management for monodb in progress"
 
 ID=$(id -u)
 COMPONENT="frontend"
