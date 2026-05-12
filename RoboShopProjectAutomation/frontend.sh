@@ -48,10 +48,9 @@ echo -n "Unzipping the folder"
 unzip /tmp/$COMPONENT.zip &>> $LOG
 stat $?
 
-pwd
-ls
+SCRIPT_DIR=$(pwd)
 echo -n "Configuring $COMPONENT proxy file"
-cp /home/ec2-user/Roboshop/BashScripting/RoboShopProjectAutomation/nginx.conf /etc/nginx/nginx.conf
+cp $SCRIPT_DIR/nginx.conf /etc/nginx/nginx.conf
 stat $?
 
 echo -n "Enabling the $COMPONENT service"
