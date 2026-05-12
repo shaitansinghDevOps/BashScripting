@@ -48,7 +48,7 @@ echo -n "Unzipping the folder"
 unzip /tmp/$COMPONENT.zip &>> $LOG
 stat $?
 
-SCRIPT_DIR=$(pwd)
+SCRIPT_DIR=$(dirname "$0")
 echo -n "Configuring $COMPONENT proxy file"
 cp $SCRIPT_DIR/nginx.conf /etc/nginx/nginx.conf
 stat $?
