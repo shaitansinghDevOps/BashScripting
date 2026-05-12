@@ -24,7 +24,8 @@ stat() {
 }
 
 echo -n "Configuring the repo:"
-cp /home/ec2-user/Roboshop/BashScripting/RoboShopProjectAutomation/mongo.repo /etc/yum.repos.d/mongo.repo
+cp /home/ec2-user/BashScripting/RoboShopProjectAutomation/mongo.repo /etc/yum.repos.d/mongo.repo
+
 stat $?
 
 echo -n "Installing $COMPONENT:"
