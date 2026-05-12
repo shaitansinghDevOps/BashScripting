@@ -48,6 +48,8 @@ echo -n "Unzipping the folder"
 unzip /tmp/$COMPONENT.zip &>> $LOG
 stat $?
 
+pwd
+ls
 echo -n "Configuring $COMPONENT proxy file"
 cp nginx.conf /etc/nginx/nginx.conf
 stat $?
