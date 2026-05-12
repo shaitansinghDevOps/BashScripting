@@ -48,6 +48,10 @@ echo -n "Unzipping the folder"
 unzip /tmp/$COMPONENT.zip &>> $LOG
 stat $?
 
+echo -n "Configuring $COMPONENT proxy file"
+cp nginx.conf /etc/nginx/nginx.conf
+stat $?
+
 echo -n "Enabling the $COMPONENT service"
 systemctl enable nginx &>> $LOG
 stat $?
