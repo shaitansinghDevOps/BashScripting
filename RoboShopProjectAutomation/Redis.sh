@@ -34,7 +34,7 @@ echo -n "Enabling $COMPONENT"
 dnf module enable redis:7 -y &>> $LOG
 stat $?
 
-echo -n "Installing nodejs"
+echo -n "Installing $COMPONENT"
 dnf install redis -y &>> $LOG
 stat $?
 
