@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Configuration management for monodb in progress"
+echo "Configuration management for catalogue  in progress"
 
 ID=$(id -u)
 COMPONENT="catalogue"
