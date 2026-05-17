@@ -66,7 +66,7 @@ curl -L -o /tmp/$COMPONENT.zip https://stan-robotshop.s3.amazonaws.com/$COMPONEN
 stat $?
 
 echo -n "Configuring $COMPONENT proxy file"
-cp /home/ec2-user/Roboshop/BashScripting/RoboShopProjectAutomation/nginx.conf /etc/systemd/system/catalogue.service
+cp /home/ec2-user/Roboshop/BashScripting/RoboShopProjectAutomation/${COMPONENT}.service /etc/systemd/system/catalogue.service
 stat $?
 
 echo -n "Extracting the $COMPONENT app"
