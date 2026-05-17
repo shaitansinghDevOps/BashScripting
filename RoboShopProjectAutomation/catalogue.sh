@@ -53,13 +53,13 @@ echo -n "Creating the user account"
 create_user &>> $LOG
 stat $?
 
-echo -n "set up an /app directory to hold app data"
-mkdir /app 
-
 echo -n "Performing cleanup of $COMPONENT :"
-rm -rf /app/ || true 
+rm -rf /app || true
 stat $?
 
+echo -n "Creating app directory :"
+mkdir /app
+stat $?
 
 echo -n "Downloading the UI of $COMPONENT"
 curl -L -o /tmp/$COMPONENT.zip https://stan-robotshop.s3.amazonaws.com/$COMPONENT-v3.zip &>> $LOG
@@ -70,19 +70,20 @@ cp  /home/ec2-user/BashScripting/RoboShopProjectAutomation//${COMPONENT}.service
 stat $?
 
 echo -n "Extracting the $COMPONENT app"
-unzip -o /tmp/${COMPONENT}.zip -d /app/  &>> $LOG
+unzip -o /tmp/${COMPONENT}.zip -d /app/ &>> $LOG
 stat $?
 
-echo -n "genrating the $COMPONENT Artificats"
+echo -n "Generating the $COMPONENT artifacts"
 cd /app/
-npm install &>> LOG
-statc $?
+npm install &>> $LOG
+stat $?
 
 echo -n "installing mongodb schema :"
-dnf install mongodb-mongosh -y &>> LOG
+dnf install mongodb-mongosh -y &>> $LOG
 
 echo -n "injecting the schemea  :"
-mongosh --host mongodb.shoptherobo.shop </app/db/master-data.js
+mongosh --host mongodb.shoptherobo.shop < /app/db/master-data.js &>> $LOG
+stat $?
 
 
 
