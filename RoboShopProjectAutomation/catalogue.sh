@@ -80,6 +80,7 @@ stat $?
 
 echo -n "installing mongodb schema :"
 dnf install mongodb-mongosh -y &>> $LOG
+stat $?
 
 echo -n "injecting the schemea  :"
 mongosh --host mongodb.shoptherobo.shop < /app/db/master-data.js &>> $LOG
