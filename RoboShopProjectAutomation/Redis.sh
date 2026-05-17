@@ -46,9 +46,10 @@ stat $?
 
 echo -n "Enabling the $COMPONENT service"
 systemctl enable redis &>> $LOG
+stat $?
 
 echo -n "Starting the $COMPONENT service"
 systemctl start redis &>> $LOG
 systemctl status redis -l &>> $LOG
-stat ?
+stat $?
 
