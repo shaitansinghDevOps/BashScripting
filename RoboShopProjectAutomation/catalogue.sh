@@ -78,7 +78,9 @@ cd /app/
 npm install &>> $LOG
 stat $?
 
+
 echo -n "installing mongodb schema :"
+cp /home/ec2-user/BashScripting/RoboShopProjectAutomation/mongo.repo /etc/yum.repos.d/mongo.repo
 dnf install mongodb-mongosh -y &>> $LOG
 stat $?
 
