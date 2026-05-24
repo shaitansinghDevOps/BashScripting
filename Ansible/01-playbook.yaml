@@ -1,7 +1,7 @@
-name: Example Playbook
-hosts: all
-tasks:
-  - name: name of task from play1
-    ansible.builtin.debug:
-      msg: "This is a message from play1"
-   
+- name: Example Playbook
+  hosts: all
+
+  tasks:
+    - name: name of task from play1
+      ansible.builtin.debug:
+        msg: "This is a message from play1"
