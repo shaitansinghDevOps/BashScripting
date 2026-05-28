@@ -1,0 +1,22 @@
+- name: Disabling the default nginx version
+  ansible.builtin.dnf:
+    name: '@nginx'
+    state: absent
+
+- name: Enabling nginx 1.24 module
+  ansible.builtin.dnf:
+    name: nginx
+    state: present
+    module_hotfixes: true
+    enablerepo: nginx:1.24
+
+- name: Installing nginx
+  ansible.builtin.package:
+    name: nginx
+    state: present
+    
+- name: starting nginx
+  ansible.builtin.service:
+    name: nginx
+    state: started
+    enabled: true
