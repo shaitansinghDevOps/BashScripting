@@ -1,0 +1,6 @@
+- name: Configuring the roboshop app
+  become: true
+  hosts: frontend
+  roles:
+    - frontend
+   
