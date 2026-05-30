@@ -26,6 +26,12 @@
   ansible.builtin.file:
     path: "{{ path }}"
     state: absent
+
+- name: Probsing nginx content
+  ansible.builtin.file:
+    path: "{{ path }}"
+    state: directory
+
   
 
 - name: Extract frontend files
