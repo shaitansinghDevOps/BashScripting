@@ -10,9 +10,33 @@
   ansible.builtin.package:
     name: nginx
     state: present
-    
-- name: starting nginx
+
+- name: Start nginx
   ansible.builtin.service:
     name: nginx
     state: started
     enabled: true
+
+# - name: Find default nginx content
+#   ansible.builtin.find:
+#     paths: /usr/share/nginx/html
+#   register: nginx_html_files
+
+- name: Remove default nginx content
+  ansible.builtin.file:
+    path: "{{ path }}"
+    state: absent
+  
+
+- name: Extract frontend files
+  ansible.builtin.unarchive:
+    src: {{url}}
+    dest: /tmp/
+    remote_src: yes
+
+- name: Configuring the hostName
+  ansible.builtin.command: set-hostname frontend-{{env}}
+
+
+
+    
