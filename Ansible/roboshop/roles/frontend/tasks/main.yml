@@ -11,11 +11,7 @@
     name: nginx
     state: present
 
-- name: Start nginx
-  ansible.builtin.service:
-    name: nginx
-    state: started
-    enabled: true
+
 
 # - name: Find default nginx content
 #   ansible.builtin.find:
@@ -32,13 +28,18 @@
     path: "{{ path }}"
     state: directory
 
-  
 
 - name: Extract frontend files
   ansible.builtin.unarchive:
     src: "{{url}}"
-    dest: /tmp/
+    dest: /usr/share/nginx/html
     remote_src: yes
+
+- name: Start nginx
+  ansible.builtin.service:
+    name: nginx
+    state: started
+    enabled: true
 
 - name: Configuring the hostName
   ansible.builtin.command: set-hostname frontend-{{env}}
