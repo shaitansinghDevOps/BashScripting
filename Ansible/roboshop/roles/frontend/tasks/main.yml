@@ -1,29 +1,29 @@
-- name: Reset nginx module
+- name: Reset "{{packagename}}" module
   ansible.builtin.command:
-    cmd: dnf module reset nginx -y
+    cmd: dnf module reset "{{packagename}}" -y
 
-- name: Enable nginx 1.24 module
+- name: Enable "{{packagename}}" 1.24 module
   ansible.builtin.command:
-    cmd: dnf module enable nginx:1.24 -y
+    cmd: dnf module enable "{{packagename}}":1.24 -y
 
-- name: Install nginx
+- name: Install "{{packagename}}"
   ansible.builtin.package:
-    name: nginx
+    name: "{{packagename}}"
     state: present
 
 
 
-# - name: Find default nginx content
+# - name: Find default "{{packagename}}" content
 #   ansible.builtin.find:
-#     paths: /usr/share/nginx/html
-#   register: nginx_html_files
+#     paths: /usr/share/"{{packagename}}"/html
+#   register: "{{packagename}}"_html_files
 
-- name: Remove default nginx content
+- name: Remove default "{{packagename}}" content
   ansible.builtin.file:
     path: "{{ path }}"
     state: absent
 
-- name: Probsing nginx content
+- name: Probsing "{{packagename}}" content
   ansible.builtin.file:
     path: "{{ path }}"
     state: directory
@@ -32,12 +32,18 @@
 - name: Extract frontend files
   ansible.builtin.unarchive:
     src: "{{url}}"
-    dest: /usr/share/nginx/html
+    dest: /usr/share/"{{packagename}}"/html
     remote_src: yes
 
-- name: Start nginx
+- name: updating the ngnix config file
+  ansible.builtin.template:
+    src: nginx.conf
+    dest: /etc/nginx/nginx.conf
+    remote_src: yes
+
+- name: Start "{{packagename}}"
   ansible.builtin.service:
-    name: nginx
+    name: "{{packagename}}"
     state: started
     enabled: true
 
