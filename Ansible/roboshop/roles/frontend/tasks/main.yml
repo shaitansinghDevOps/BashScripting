@@ -30,7 +30,7 @@
 
 - name: Extract frontend files
   ansible.builtin.unarchive:
-    src: {{url}}
+    src: "{{url}}"
     dest: /tmp/
     remote_src: yes
 
