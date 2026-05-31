@@ -1,0 +1,19 @@
+- name: Configuring the {{ component }} repo 
+  ansible.builtin.copy:
+    src: "{{ component }}.repo"
+    dest: /etc/yum.repos.d/{{ component }}.repo
+
+- name: Enabling the visibility of "{{ packageName }}" service
+  ansible.builtin.replace:
+  path : "{{path}}" #this value is avaiable inside the vars file in main.yml
+  regexp: '127.0.0.1'
+  replace: '0.0.0.0'
+
+- name: Starting "{{ packageName }}" service
+  ansible.builtin.service:
+    name: mongod
+    enabled: yes
+    state: restarted
+    
+- name: Configuring the hostName
+  ansible.builtin.shell: set-hostname {{ component }}-{{ env }}

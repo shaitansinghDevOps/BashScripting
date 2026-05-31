@@ -1,0 +1,3 @@
+component: "mongodb"
+packageName: "mongodb-org"
+path : //etc/mongod.conf
