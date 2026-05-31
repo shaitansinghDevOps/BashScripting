@@ -1,6 +1,6 @@
 - name: Configuring the roboshop app
   become: true
-  hosts: {{component}}
+  hosts: "{{component}}"
   roles:
     - {{component}}
    
