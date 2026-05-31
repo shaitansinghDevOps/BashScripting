@@ -5,9 +5,9 @@
 
 - name: Enabling the visibility of "{{ packageName }}" service
   ansible.builtin.replace:
-  path : "{{path}}" #this value is avaiable inside the vars file in main.yml
-  regexp: '127.0.0.1'
-  replace: '0.0.0.0'
+    path: /etc/mongod.conf
+    regexp: '127.0.0.1'
+    replace: '0.0.0.0'
 
 - name: Starting "{{ packageName }}" service
   ansible.builtin.service:
